@@ -15,7 +15,6 @@ exports.run = (bot, msg, args = []) => {
                     saveDb(bot);
                     m.edit('Configuration Sucessfully Updated. Testing connection...');
                     functions.log('Sonarr Configuration Sucessfully Updated. Testing connection...');
-                    const getAPI = require('../../util/sonarr/getAPI.js');
                     const getShow = require('../../util/sonarr/getTvShow');
                     getShow(msg.guild, '257655')
                         .then(() => {

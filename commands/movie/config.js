@@ -1,4 +1,5 @@
 const saveDb = require('../../util/db/saveDb');
+const functions = require(`${process.cwd()}/lib/globalFunctions.js`);
 exports.run = (bot, msg, args = []) => {
     const [source, url, apikey, defprofile, defroot] = args;
     if (!source || !url || !apikey || !defprofile || !defroot) { msg.channel.send(`ERR: Not all configuration provided \nUsage: ${msg.guild.settings.prefix}${this.help.usage}`); return; }
@@ -6,16 +7,19 @@ exports.run = (bot, msg, args = []) => {
         case 'radarr':
             msg.channel.send('Configuring Radarr')
                 .then((m) => {
+                    functions.log('Configuring Radarr');
                     msg.guild.settings.radarr.url = url;
                     msg.guild.settings.radarr.apikey = apikey;
                     msg.guild.settings.radarr.defaultProfile = defprofile;
                     msg.guild.settings.radarr.defaultRootPath = defroot;
                     saveDb(bot);
-                    m.edit('Configuration Sucessfully Updated. Testing...');
+                    m.edit('Configuration Sucessfully Updated. Testing connection...');
+                    functions.log('Radarr Configuration Sucessfully Updated. Testing connection...');
                     const getMovie = require('../../util/radarr/getMovie');
                     getMovie(msg.guild, 'tt0078748')
                         .then(() => {
-                            m.edit('Configuration sucessful. Radarr is now configured');
+                            m.edit('Connection sucessful. Radarr is now configured');
+                            functions.log('Connection sucessful. Radarr is now configured', "GREEN");
                         }).catch((err) => { m.edit(`ERR: ${err}`); });
                 });
             break;
