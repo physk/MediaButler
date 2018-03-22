@@ -1,0 +1,46 @@
+{
+    "prefix": "!",
+    "type": "private",
+    "uuidv4": "",
+    "logchannel": "",
+    "omdb_apikey": "5af02350",
+    "thetvdb": {
+        "url": "",
+        "apikey": "88D2ED25A2539ECE"
+    },
+    "tautulli": {
+        "url": "",
+        "apikey": ""
+    },
+    "sonarr": {
+        "url": "",
+        "apikey": "",
+        "defaultProfile": "",
+        "defaultRootPath": ""
+    },
+    "radarr": {
+        "url": "",
+        "apikey": "",
+        "defaultProfile": "",
+        "defaultRootPath": ""        
+    },
+    "lidarr": {
+        "url": "",
+        "apiley": "",
+        "defaultProfile": "",
+        "defaultRootPath": ""
+    },
+    "synclounge": {
+        "serverurl": "",
+        "appurl": ""
+    },
+    "plex": {
+        "url": "",
+        "token": ""
+    },
+    "emby": {
+      "url": "",
+      "external_url": "",
+      "api_key": ""
+    }
+}
