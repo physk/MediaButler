@@ -1,3 +1,4 @@
+const functions = require(`${process.cwd()}/lib/globalFunctions.js`);
 module.exports = client => { // eslint-disable-line no-unused-vars
-  console.log(`You have been disconnected at ${new Date()}`);
+  functions.log(`You have been disconnected at ${new Date()}`, "RED");
 };

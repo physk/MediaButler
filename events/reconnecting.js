@@ -1,3 +1,4 @@
+const functions = require(`${process.cwd()}/lib/globalFunctions.js`);
 module.exports = client => { // eslint-disable-line no-unused-vars
-  console.log(`Reconnecting at ${new Date()}`);
+  functions.log(`Reconnecting at ${new Date()}`, "GREEN");
 };

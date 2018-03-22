@@ -267,3 +267,4 @@ apiauth.json
 settings.sqlite
 config/*
 !config/default.json
+package-lock.json
