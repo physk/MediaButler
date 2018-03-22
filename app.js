@@ -1,4 +1,4 @@
-const appDir = require('path').dirname(__filename);
+const appDir = process.cwd();
 const functions = require(appDir + '/lib/globalFunctions.js');
 const settings = require(appDir + '/settings.json');
 const Discord = require('discord.js');
@@ -36,7 +36,7 @@ fs.readdir('./commands/', (err, files) => {
                 functions.log(`  ${props.help.name}: Command disabled, Skipping..`);
             }
         });
-        functions.log('Finished loading commands');
+        functions.log('  Finished loading commands, loading sub commands..');
     }
     else {
         // No Commands found. Log to console and quit
