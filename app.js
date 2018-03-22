@@ -48,7 +48,7 @@ fs.readdir('./commands/', (err, files) => {
 client.reload = (command) => {
     const p = new Promise((resolve, reject) => {
         try {
-            delete require.cache[require.resolve(`${appDir}/commands/${comamnd}`)];
+            delete require.cache[require.resolve(`${appDir}/commands/${command}`)];
             const cmd = require(`${appDir}/commands/${command}`);
             client.commands.delete(command);
             client.aliases.forEach((cmd, alias) => {
