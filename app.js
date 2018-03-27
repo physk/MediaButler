@@ -76,3 +76,13 @@ client.elevation = (message) => {
 
 functions.log('Connecting to discord...');
 client.login(settings.token);
+
+process.on('SIGINT', () => {
+    functions.log('Gracefully shutting down from SIGINT (CTRL + C)', 'RED');
+    functions.log('Logging out of discord...');
+    client.destroy()
+        .then(() => {
+            functions.log('Shutting down. Bye!');
+            process.exit();
+        });
+});
