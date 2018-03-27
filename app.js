@@ -8,7 +8,7 @@ const fs = require('fs');
 require(appDir + '/util/eventLoader.js')(client);
 
 functions.log('------------------------------------------------------');
-functions.log(`    Starting MediaButler Discord Bot ${client.mbVersion}`);
+functions.log(`    Starting MediaButler Discord Bot v${client.mbVersion}`);
 functions.log('------------------------------------------------------');
 
 client.commands = new Discord.Collection();
@@ -19,7 +19,7 @@ fs.readdir('./commands/', (err, files) => {
         functions.log(err, "RED"); //log error to console
         process.exit(1); //exit app
     }
-    functions.log(`Found total of ${files.length} commands to load`);
+    functions.log(`Found total of ${files.length} modules to load`);
     if (files.length >= 1) {
         //Run through each command folder and load into memory
         files.forEach(f => {
@@ -36,7 +36,7 @@ fs.readdir('./commands/', (err, files) => {
                 functions.log(`  ${props.help.name}: Command disabled, Skipping..`);
             }
         });
-        functions.log('  Finished loading commands, loading sub commands..');
+        functions.log('  Finished loading modules, loading sub commands..');
     }
     else {
         // No Commands found. Log to console and quit
@@ -83,6 +83,6 @@ process.on('SIGINT', () => {
     client.destroy()
         .then(() => {
             functions.log('Shutting down. Bye!');
-            process.exit();
+            process.exit(0);
         });
 });

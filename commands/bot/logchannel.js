@@ -4,6 +4,10 @@ exports.run = (bot, msg, args = []) => {
         msg.channel.send('ERR: No channel specified.');
         return;
     }
+    if (args[0].startsWith("<#")) {
+        args[0] = args[0].slice(2, -1);
+        args[0] = msg.guild.channels.find('id', args[0]).name;
+    } // fixes #channel issue
     msg.guild.settings.logchannel = args[0];
     saveDb(bot);
     msg.channel.send(`Updated logchannel to ${args[0]}`);

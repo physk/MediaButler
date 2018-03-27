@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const functions = require(`${process.cwd()}/lib/globalFunctions.js`);
 module.exports = message => {
     const client = message.client;
     if (!message.guild.settings) return; //Should fix crash if a message is typed after connection but before settings are loaded
@@ -25,6 +26,7 @@ module.exports = message => {
                 .addField('Command', command, false)
                 .addField('Arguments', message.content, false);
             message.guild.channels.find('name', message.guild.settings.logchannel).send({ embed });
+            functions.log(`${message.author.username} called '${message.content}'`);
         }
     }
 };
